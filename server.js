@@ -1,5 +1,6 @@
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,7 +19,7 @@ app.use('/video', createProxyMiddleware({
 }));
 
 app.get('/', (req, res) => {
-    res.send('<h1>Servidor de Proxy para Mega</h1><video width="640" height="360" controls autoplay loop><source src="/video" type="video/mp4">Seu navegador não suporta a tag de vídeo.</video>');
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {
