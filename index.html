@@ -3,10 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canal 24hrs</title>
+    <title>24hr Video Programming</title>
 </head>
 <body>
-    <h1>Canal 24 Horas</h1>
-    <iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/F7VWDKrZ#Z8IWA-ATHF-DGgCiorIgWtxez3JzjFJLOa-U9aDgiIc!9000s1a" allowfullscreen allow="autoplay"></iframe>
+    <h1>24hr Video Programming</h1>
+    <video id="video" width="640" height="360" controls>
+        <source src="videos_final.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        function getSecondsSinceStart(startDate) {
+            const now = new Date();
+            const start = new Date(startDate);
+            const diffInSeconds = (now - start) / 1000;
+            return diffInSeconds;
+        }
+
+        function getVideoStartTime(secondsSinceStart, videoDuration) {
+            return secondsSinceStart % videoDuration;
+        }
+
+        // Set the start date and time of the programming
+        const startDate = '2024-06-07T00:00:00Z';
+        // Video duration in seconds (7 hours 38 minutes 1 second)
+        const videoDuration = (7 * 60 * 60) + (38 * 60) + 1;
+
+        const secondsSinceStart = getSecondsSinceStart(startDate);
+        const startTime = getVideoStartTime(secondsSinceStart, videoDuration);
+
+        const video = document.getElementById('video');
+        video.currentTime = startTime;
+        video.play();
+
+        console.log(`Video starts at ${Math.floor(startTime)} seconds.`);
+    </script>
 </body>
 </html>
