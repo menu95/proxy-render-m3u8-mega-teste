@@ -7,10 +7,7 @@
 </head>
 <body>
     <h1>24hr Video Programming</h1>
-    <video id="video" width="640" height="360" controls>
-        <source src="videos_final.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <iframe id="video" width="640" height="360" frameborder="0" allowfullscreen allow="autoplay;"></iframe>
 
     <script>
         function getSecondsSinceStart(startDate) {
@@ -32,9 +29,9 @@
         const secondsSinceStart = getSecondsSinceStart(startDate);
         const startTime = getVideoStartTime(secondsSinceStart, videoDuration);
 
-        const video = document.getElementById('video');
-        video.currentTime = startTime;
-        video.play();
+        const iframe = document.getElementById('video');
+        const videoURL = `https://mega.nz/embed/F7VWDKrZ#Z8IWA-ATHF-DGgCiorIgWtxez3JzjFJLOa-U9aDgiIc`;
+        iframe.src = `${videoURL}?autoplay=1&start=${Math.floor(startTime)}`;
 
         console.log(`Video starts at ${Math.floor(startTime)} seconds.`);
     </script>
