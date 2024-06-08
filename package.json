@@ -1,0 +1,13 @@
+{
+  "name": "mega-video-proxy",
+  "version": "1.0.0",
+  "description": "Proxy para vídeos do Mega",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.6"
+  }
+}
