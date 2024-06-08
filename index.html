@@ -7,13 +7,14 @@
 </head>
 <body>
     <h1>Canal 24 Horas</h1>
-    <iframe id="video" width="640" height="360" frameborder="0" src="https://mega.nz/embed/F7VWDKrZ#Z8IWA-ATHF-DGgCiorIgWtxez3JzjFJLOa-U9aDgiIc!9000s1a" allowfullscreen allow="autoplay" autoplay loop></iframe>
+    <iframe id="video" width="640" height="360" frameborder="0" allowfullscreen allow="autoplay" autoplay loop></iframe>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             const iframe = document.getElementById('video');
-            const src = iframe.src;
-            iframe.src = '';
-            iframe.src = src + '&autoplay=1';
+            const baseUrl = 'https://mega.nz/embed/F7VWDKrZ#Z8IWA-ATHF-DGgCiorIgWtxez3JzjFJLOa-U9aDgiIc!9000s1a';
+            const videoDuration = 3600; // duração do vídeo em segundos, ajuste conforme necessário
+            const randomStart = Math.floor(Math.random() * videoDuration);
+            iframe.src = `${baseUrl}?start=${randomStart}&autoplay=1`;
         });
     </script>
 </body>
